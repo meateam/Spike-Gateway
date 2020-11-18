@@ -1,2 +1,2 @@
-# Spike-Gateway
-Spike Project NGINX which navigates requests to the appropriate locations.
+# SpikeDeployment
+Spike Project docker deployment configurations.
