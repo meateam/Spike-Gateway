@@ -29,6 +29,7 @@ services:
     restart: always
     depends_on:
       - redis
+      - ospike
     deploy:
       replicas: 1
       resources:
