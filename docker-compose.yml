@@ -6,6 +6,10 @@ services:
       - '4200:4200'
     env_file:
       - ./env/spike-client.env
+    volumes:
+      - "${ROOT_PATH}/SpikeDeployment/certs/spike-client/privatekey.pem:/usr/src/app/dist/src/certs/files/privatekey.pem"
+      - "${ROOT_PATH}/SpikeDeployment/certs/spike-client/publickey.pem:/usr/src/app/dist/src/certs/files/publickey.pem"
+      - "${ROOT_PATH}/SpikeDeployment/certs/spike-client/certificate.pem:/usr/src/app/dist/src/certs/files/certificate.pem"
     restart: always
     depends_on:
       - spike-server
@@ -28,6 +32,12 @@ services:
       - '3005:3005'
     env_file:
       - ./env/spike-server.env
+    volumes:
+      - "${ROOT_PATH}/SpikeDeployment/certs/spike-server/privatekey.pem:/usr/src/app/dist/certs/files/privatekey.pem"
+      - "${ROOT_PATH}/SpikeDeployment/certs/spike-server/publickey.pem:/usr/src/app/dist/certs/files/publickey.pem"
+      - "${ROOT_PATH}/SpikeDeployment/certs/spike-server/certificate.pem:/usr/src/app/dist/certs/files/certificate.pem"
+      - "${ROOT_PATH}/SpikeDeployment/certs/spike-server/publickeyofclient.pem:/usr/src/app/dist/certs/files/publickeyofclient.pem"
+      - "${ROOT_PATH}/SpikeDeployment/certs/spike-server/publickeyofospike.pem:/usr/src/app/dist/certs/files/publickeyofospike.pem"
     restart: always
     depends_on:
       - redis
@@ -57,6 +67,11 @@ services:
       - '1338:1338'
     env_file:
       - ./env/ospike.env
+    volumes:
+      - ${ROOT_PATH}/SpikeDeployment/certs/ospike/privatekey.pem:/usr/src/app/dist/certs/files/privatekey.pem
+      - ${ROOT_PATH}/SpikeDeployment/certs/ospike/publickey.pem:/usr/src/app/dist/certs/files/publickey.pem
+      - ${ROOT_PATH}/SpikeDeployment/certs/ospike/certificate.pem:/usr/src/app/dist/certs/files/certificate.pem
+      - ${ROOT_PATH}/SpikeDeployment/certs/ospike/jwks.json:/usr/src/app/dist/certs/files/jwks.json
     restart: always
     deploy:
       replicas: 1

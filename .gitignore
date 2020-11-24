@@ -1,2 +1,9 @@
 env
 save
+certs/ospike/*
+certs/spike-server/*
+certs/spike-client/*
+
+!certs/ospike/.gitkeep
+!certs/spike-server/.gitkeep
+!certs/spike-client/.gitkeep
